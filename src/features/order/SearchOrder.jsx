@@ -15,10 +15,11 @@ function SearchOrder() {
   return (
     <form onSubmit={hahdleSubmit}>
       <input
-        type='text'
-        placeholder='Search order #'
+        type="text"
+        placeholder="Search order #"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        className="bg-stone-50"
       />
     </form>
   )
