@@ -1,4 +1,5 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Form, redirect, useActionData, useNavigation } from 'react-router'
 import { createOrder } from '../../services/apiRestaurant'
 import Button from '../../ui/Button'
@@ -34,6 +35,7 @@ const fakeCart = [
 ]
 
 function CreateOrder() {
+  const username = useSelector((state) => state.user.username)
   const navigation = useNavigation()
   const isSubmiting = navigation.state === 'submitting'
 
@@ -49,7 +51,13 @@ function CreateOrder() {
       <Form method="POST">
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">First Name</label>
-          <input className="input grow" type="text" name="customer" required />
+          <input
+            className="input grow"
+            type="text"
+            name="customer"
+            defaultValue={username}
+            required
+          />
         </div>
 
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
